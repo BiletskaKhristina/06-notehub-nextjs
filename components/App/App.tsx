@@ -1,8 +1,10 @@
+'use client';
+
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { useDebouncedCallback } from 'use-debounce';
 
-import { fetchNotes } from '../../services/noteService';
+import { fetchNotes, NotesResponse } from '@/services/noteService';
 
 import SearchBox from '../SearchBox/SearchBox';
 import NoteList from '../NoteList/NoteList';
@@ -22,7 +24,7 @@ export default function App() {
     setPage(1);
   }, 500);
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, isError } = useQuery<NotesResponse>({
     queryKey: ['notes', page, search],
     queryFn: () => fetchNotes(page, search),
     placeholderData: (prev) => prev,

@@ -1,8 +1,18 @@
-// services/noteService.ts
+import { Note } from '@/types/note';
 
-export async function fetchNotes(page: number, search: string) {
+export type NotesResponse = {
+  notes: Note[];
+  totalPages: number;
+};
+
+export async function fetchNotes(
+  page: number,
+  search: string
+): Promise<NotesResponse> {
   console.log(page, search);
 
-  // тимчасово
-  return [];
+  return {
+    notes: [],
+    totalPages: 1,
+  };
 }
