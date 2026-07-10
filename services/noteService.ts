@@ -1,18 +1,12 @@
-import { Note } from '@/types/note';
+import {
+  fetchNotes as fetchNotesApi,
+  createNote,
+  deleteNote,
+  type FetchNotesResponse,
+  type CreateNoteDTO,
+} from '@/lib/api';
 
-export type NotesResponse = {
-  notes: Note[];
-  totalPages: number;
-};
+export type NotesResponse = FetchNotesResponse;
 
-export async function fetchNotes(
-  page: number,
-  search: string
-): Promise<NotesResponse> {
-  console.log(page, search);
-
-  return {
-    notes: [],
-    totalPages: 1,
-  };
-}
+export const fetchNotes = fetchNotesApi;
+export { createNote, deleteNote, type CreateNoteDTO };

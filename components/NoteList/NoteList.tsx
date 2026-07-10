@@ -9,7 +9,7 @@ interface NoteListProps {
 export default function NoteList({ notes }: NoteListProps) {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  const mutation = useMutation<unknown, unknown, string>({
     mutationFn: deleteNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });

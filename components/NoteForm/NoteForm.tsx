@@ -32,7 +32,7 @@ const schema = Yup.object({
 export default function NoteForm({ onClose }: NoteFormProps) {
   const queryClient = useQueryClient();
 
-  const mutation = useMutation({
+  const mutation = useMutation<unknown, unknown, CreateNoteDTO>({
     mutationFn: createNote,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['notes'] });
