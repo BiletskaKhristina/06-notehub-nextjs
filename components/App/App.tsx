@@ -26,7 +26,7 @@ export default function App() {
 
   const { data, isLoading, isError } = useQuery<NotesResponse>({
     queryKey: ['notes', page, search],
-    queryFn: () => fetchNotes(page, search),
+    queryFn: () => fetchNotes(search, page),
     placeholderData: (prev) => prev,
     staleTime: 10000,
   });

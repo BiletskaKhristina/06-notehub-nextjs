@@ -1,6 +1,7 @@
 import type { Note } from '../../types/note';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { deleteNote } from '../../services/noteService';
+import Link from 'next/link';
 
 interface NoteListProps {
   notes: Note[];
@@ -23,6 +24,8 @@ export default function NoteList({ notes }: NoteListProps) {
           <h2>{note.title}</h2>
           <p>{note.content}</p>
           <span>{note.tag}</span>
+
+          <Link href={`/notes/${note.id}`}>View details</Link>
 
           <button onClick={() => mutation.mutate(note.id)}>
             Delete
